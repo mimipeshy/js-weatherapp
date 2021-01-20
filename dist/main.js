@@ -1,0 +1,1 @@
+(()=>{"use strict";(async e=>{try{const e=await fetch("https://api.openweathermap.org/data/2.5/weather?q=Benin&appid=da55a677205c556d6c26145698c431fd"),o=await e.json(),a=parseFloat(o.main.temp),t=a-273.15,c=1.8*t+32;console.log("kelvin: ",a.toFixed(2)),console.log("celcius: ",t.toFixed(2)),console.log("fareheit: ",c.toFixed(2))}catch(e){console.log(e)}})()()})();
