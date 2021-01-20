@@ -1,1 +1,27 @@
+body {
+    color: #333;
+    font-size: 13px;
+    line-height: 18px;
+    overflow-x: hidden;
+    align-content: center;
+}
+  
+.card{
+    width: 18rem;
+    margin: 0 auto; 
+    float: none; 
+}
 
+footer,
+.footer-new{    
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3)
+
+  }
+svg{
+    color: red;
+    width:13px;
+    height:13px;
+  }
