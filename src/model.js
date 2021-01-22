@@ -7,7 +7,7 @@ export const weather = {
   data: {},
 };
 
-const convertTime = function (timestamp, format = 'short') {
+const convertTime = (timestamp, format = 'short') => {
   const options = format === 'full'
     ? { dateStyle: 'full', timeStyle: 'short' }
     : { timeStyle: 'short' };

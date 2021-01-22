@@ -74,9 +74,9 @@ class View {
     this.parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
-  addHandlerRender(handler) {
-    window.addEventListener('load', handler);
-  }
+  // addHandlerRender(handler) {
+  //   window.addEventListener('load', handler);
+  // }
 
   addHandlerSearch(handler) {
     this.searchBar.addEventListener('submit', (e) => {
