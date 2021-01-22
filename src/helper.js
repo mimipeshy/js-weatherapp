@@ -1,14 +1,14 @@
-import { TIMEOUT_SEC } from './config';
+import { TIMEOUT_SEC } from "./config";
 
 const timeout = function (s) {
-  return new Promise(((_, reject) => {
-    setTimeout(() => {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
       reject(new Error(`Request took too long! Timeout after ${s} second`));
     }, s * 1000);
-  }));
+  });
 };
 
-const AJAX = async function (url) {
+export const AJAX = async function (url) {
   try {
     const res = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]);
     const data = await res.json();
@@ -17,7 +17,7 @@ const AJAX = async function (url) {
       throw new Error(
         `${data.message[0].toUpperCase() + data.message.slice(1)} (${
           res.status
-        })`,
+        })`
       );
     }
     return data;
@@ -25,4 +25,3 @@ const AJAX = async function (url) {
     throw err;
   }
 };
-export default AJAX();
