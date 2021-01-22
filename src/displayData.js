@@ -12,12 +12,11 @@ const loadLocation = async function (position) {
     // Render weather data
     view.render(model.weather.data);
   } catch (err) {
-    console.error(err);
     view.renderMessage(err.message);
   }
 };
 
-const controlGetLocationWeather = function () {
+const controlGetLocationWeather = () => {
   view.renderSpinner();
 
   // Get device location
@@ -42,17 +41,16 @@ const controlSearchWeather = async function () {
     // Render weather data
     view.render(model.weather.data);
   } catch (err) {
-    console.error(err);
     view.renderMessage(err.message);
   }
 };
 
-const controlConvert = function (unit) {
+const controlConvert = (unit) => {
   model.convertUnit(unit);
   view.render(model.weather.data);
 };
 
-const init = function () {
+const init = () => {
   view.addHandlerRender(controlGetLocationWeather);
   view.addHandlerSearch(controlSearchWeather);
   view.addHandlerConvert(controlConvert);

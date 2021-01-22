@@ -1,7 +1,7 @@
 import {
   KEY, API_URL, UNIT, REST_COUNTRY_URL,
 } from './config';
-import { AJAX } from './helper';
+import AJAX from './helper';
 
 export const weather = {
   data: {},
@@ -39,32 +39,27 @@ export const loadWeather = async function (loc) {
   const parameter = Array.isArray(loc)
     ? `lat=${loc[0]}&lon=${loc[1]}`
     : `q=${loc}`;
+  const data = await AJAX(
+    `${API_URL}${parameter}&units=${UNIT}&appid=${KEY}`,
+  );
 
-  try {
-    const data = await AJAX(
-      `${API_URL}${parameter}&units=${UNIT}&appid=${KEY}`,
-    );
-
-    weather.data = {
-      name: data.name,
-      country: data.sys.country,
-      temp: Math.round(data.main.temp),
-      feelsLike: Math.round(data.main.feels_like),
-      humidity: data.main.humidity,
-      sunrise: convertTime(data.sys.sunrise),
-      sunset: convertTime(data.sys.sunset),
-      date: convertTime(data.dt, 'full'),
-      iconSmall: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
-      description:
+  weather.data = {
+    name: data.name,
+    country: data.sys.country,
+    temp: Math.round(data.main.temp),
+    feelsLike: Math.round(data.main.feels_like),
+    humidity: data.main.humidity,
+    sunrise: convertTime(data.sys.sunrise),
+    sunset: convertTime(data.sys.sunset),
+    date: convertTime(data.dt, 'full'),
+    iconSmall: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
+    description:
         data.weather[0].description[0].toUpperCase()
         + data.weather[0].description.slice(1),
-      unit: UNIT,
-    };
+    unit: UNIT,
+  };
 
-    const data2 = await AJAX(`${REST_COUNTRY_URL}${weather.data.country}`);
+  const data2 = await AJAX(`${REST_COUNTRY_URL}${weather.data.country}`);
 
-    weather.data.flag = data2[0].flag;
-  } catch (err) {
-    throw err;
-  }
+  weather.data.flag = data2[0].flag;
 };
