@@ -54,8 +54,6 @@ class View {
       </div>
     </div>
     `;
-
-    // this._bigCircle.style.backgroundImage = `url(${data.flag})`;
     this.smallCircle.style.backgroundImage = `url(${data.iconBig})`;
 
     this.clear();
