@@ -1,3 +1,4 @@
-## JS WEATHER APP
+# Weather App
 
-This is a weather app built using js
+This Weather App uses the Open Weather Map API.
+
