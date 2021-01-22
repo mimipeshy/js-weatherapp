@@ -74,10 +74,6 @@ class View {
     this.parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
-  // addHandlerRender(handler) {
-  //   window.addEventListener('load', handler);
-  // }
-
   addHandlerSearch(handler) {
     this.searchBar.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -95,4 +91,11 @@ class View {
   }
 }
 
+const addHandlerRender = (handler) => {
+  window.addEventListener('load', handler);
+};
+
 export default new View();
+export {
+  addHandlerRender,
+};

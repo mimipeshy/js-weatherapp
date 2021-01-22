@@ -6,7 +6,7 @@ const timeout = (s) => new Promise(((_, reject) => {
   }, s * 1000);
 }));
 
-const AJAX = async function (url) {
+async function AJAX(url) {
   const res = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]);
   const data = await res.json();
 

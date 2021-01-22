@@ -19,7 +19,7 @@ const convertTime = (timestamp, format = 'short') => {
   return time;
 };
 
-export const convertUnit = function (unit) {
+export const convertUnit = (unit) => {
   if (unit === 'imperial') {
     weather.data.temp = Math.round((weather.data.temp * 9) / 5 + 32);
     weather.data.feelsLike = Math.round((weather.data.feelsLike * 9) / 5 + 32);
@@ -35,7 +35,7 @@ export const convertUnit = function (unit) {
   }
 };
 
-export const loadWeather = async function (loc) {
+export async function loadWeather(loc) {
   const parameter = Array.isArray(loc)
     ? `lat=${loc[0]}&lon=${loc[1]}`
     : `q=${loc}`;
@@ -62,4 +62,4 @@ export const loadWeather = async function (loc) {
   const data2 = await AJAX(`${REST_COUNTRY_URL}${weather.data.country}`);
 
   weather.data.flag = data2[0].flag;
-};
+}

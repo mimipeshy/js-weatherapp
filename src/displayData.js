@@ -1,7 +1,8 @@
 import * as model from './model';
-import view from './view';
+import view, { addHandlerRender } from './view';
 
-const loadLocation = async function (position) {
+
+async function loadLocation(position) {
   try {
     const { latitude } = position.coords;
     const { longitude } = position.coords;
@@ -14,7 +15,7 @@ const loadLocation = async function (position) {
   } catch (err) {
     view.renderMessage(err.message);
   }
-};
+}
 
 const controlGetLocationWeather = () => {
   view.renderSpinner();
@@ -28,7 +29,7 @@ const controlGetLocationWeather = () => {
   }
 };
 
-const controlSearchWeather = async function () {
+async function controlSearchWeather() {
   try {
     view.renderSpinner();
     // Get query from search input
@@ -43,7 +44,7 @@ const controlSearchWeather = async function () {
   } catch (err) {
     view.renderMessage(err.message);
   }
-};
+}
 
 const controlConvert = (unit) => {
   model.convertUnit(unit);
@@ -51,7 +52,7 @@ const controlConvert = (unit) => {
 };
 
 const init = () => {
-  view.addHandlerRender(controlGetLocationWeather);
+  addHandlerRender(controlGetLocationWeather);
   view.addHandlerSearch(controlSearchWeather);
   view.addHandlerConvert(controlConvert);
 };
