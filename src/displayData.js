@@ -1,7 +1,6 @@
 import * as model from './model';
 import view, { addHandlerRender } from './view';
 
-
 async function loadLocation(position) {
   try {
     const { latitude } = position.coords;
@@ -22,12 +21,13 @@ const controlGetLocationWeather = () => {
 
   // Get device location
   if (navigator.geolocation) {
-    // If location collected invoke async function, else render message
+  // If location collected invoke async function, else render message
     navigator.geolocation.getCurrentPosition(loadLocation, () => {
       view.renderMessage();
     });
   }
 };
+
 
 async function controlSearchWeather() {
   try {

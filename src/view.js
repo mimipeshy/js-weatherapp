@@ -54,6 +54,8 @@ class View {
       </div>
     </div>
     `;
+
+    // this._bigCircle.style.backgroundImage = `url(${data.flag})`;
     this.smallCircle.style.backgroundImage = `url(${data.iconBig})`;
 
     this.clear();
@@ -74,6 +76,7 @@ class View {
     this.parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
+
   addHandlerSearch(handler) {
     this.searchBar.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -91,10 +94,10 @@ class View {
   }
 }
 
+
 const addHandlerRender = (handler) => {
   window.addEventListener('load', handler);
 };
-
 export default new View();
 export {
   addHandlerRender,

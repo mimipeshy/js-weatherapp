@@ -9,7 +9,6 @@ const timeout = (s) => new Promise(((_, reject) => {
 async function AJAX(url) {
   const res = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]);
   const data = await res.json();
-
   if (!res.ok) {
     throw new Error(
       `${data.message[0].toUpperCase() + data.message.slice(1)} (${
@@ -19,4 +18,4 @@ async function AJAX(url) {
   }
   return data;
 }
-export default AJAX();
+export default AJAX;
