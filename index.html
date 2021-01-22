@@ -3,72 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="img/weather-svgrepo-com.svg"
+    />
+    <script defer src="main.js"></script>
     <title>Weather App</title>
-  <link rel="icon" href="icon.svg"></head>
+  </head>
   <body>
-    <header id="bootstrap-overrides">
-      <nav class="navbar navbar-dark bg-dark justify-content-center">
-        <a class="nav-item navbar-brand mr-4" id="logo" href="#">Weather App</a>
-        <form class="nav-item form-inline mt-2 mt-md-0 mr-5 ml-5" id="form1">
+    <div class="container">
+      <div class="glass">
+        <form class="glass__search-bar">
           <input
-            class="form-control mr-sm-2"
             type="text"
-            placeholder="Enter City"
-            aria-label="Search"
-            id="searchBox"
+            placeholder="Search city"
+            class="glass__search-input"
           />
-          <button
-            form="form1"
-            class="btn btn-outline-light my-2 my-sm-0"
-            type="submit"
-            id="searchBtn"
-          >
-            Search
-          </button>
         </form>
-        <div
-          class="nav-item custom-control custom-switch ml-5"
-          id="celciusToFahrenheit"
-        >
-          <input
-            type="checkbox"
-            class="custom-control-input"
-            id="customSwitch1"
-          />
-          <label class="custom-control-label" for="customSwitch1">°F</label>
+        <div class="glass__result">
         </div>
-      </nav>
-    </header>
-    <div class="container-fluid background-image text-white" id="main-div">
-      <main
-        class="row d-flex flex-column justify-content-center align-items-center"
-      >
-        <div class="loader"></div>
-        <h1 class="name-country">&nbsp</h1>
-        <p class="date">&nbsp</p>
-        <p class="temp temps">&nbsp</p>
-        <p class="feels-like temps">&nbsp</p>
-        <p class="humidity">&nbsp</p>
-        <p class="description text-capitalize">&nbsp</p>
-      </main>
-      <footer class="row align-items-end p-4 mt-1">
-        <div class="current col-sm">
-          <h3 class="current-title">Currently</h3>
-          <p class="current-temp temps">&nbsp</p>
-        </div>
-        <div class="low col-sm">
-          <h3 class="low-title">Current Low</h3>
-          <p class="low-temp temps">&nbsp</p>
-        </div>
-        <div class="high col-sm">
-          <h3 class="high-title">Current High</h3>
-          <p class="high-temp temps">&nbsp</p>
-        </div>
-        <div class="tomorrow col-sm">
-          <h3 class="tomorrow-title">Tomorrow</h3>
-          <p class="tomorrow-temp temps">&nbsp</p>
-        </div>
-      </footer>
+      </div>
+      <div class="circle--small"></div>
     </div>
-  <script src="app.bundle.js"></script><script src="modules.bundle.js"></script></body>
+  </body>
 </html>
