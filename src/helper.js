@@ -18,5 +18,5 @@ async function AJAX(url) {
     );
   }
   return data;
-};
+}
 export default AJAX();
