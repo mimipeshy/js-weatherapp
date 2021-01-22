@@ -1,16 +1,5 @@
-import * as model from "./model";
-import view from "./view";
-
-const controlGetLocationWeather = function () {
-  view.renderSpinner();
-
-  // Get device location
-  if (navigator.geolocation)
-    // If location collected invoke async function, else render message
-    navigator.geolocation.getCurrentPosition(loadLocation, function () {
-      view.renderMessage();
-    });
-};
+import * as model from './model';
+import view from './view';
 
 const loadLocation = async function (position) {
   try {
@@ -25,6 +14,18 @@ const loadLocation = async function (position) {
   } catch (err) {
     console.error(err);
     view.renderMessage(err.message);
+  }
+};
+
+const controlGetLocationWeather = function () {
+  view.renderSpinner();
+
+  // Get device location
+  if (navigator.geolocation) {
+    // If location collected invoke async function, else render message
+    navigator.geolocation.getCurrentPosition(loadLocation, () => {
+      view.renderMessage();
+    });
   }
 };
 

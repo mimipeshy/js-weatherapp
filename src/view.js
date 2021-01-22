@@ -1,24 +1,24 @@
 class View {
   constructor() {
-    this._parentElement = document.querySelector(".glass__result");
-    this._searchBar = document.querySelector(".glass__search-bar");
-    this._smallCircle = document.querySelector(".circle--small");
-    this._message = "What's the weather like today? ☁";
+    this.parentElement = document.querySelector('.glass__result');
+    this.searchBar = document.querySelector('.glass__search-bar');
+    this.smallCircle = document.querySelector('.circle--small');
+    this.message = "What's the weather like today? ☁";
   }
 
   getQuery() {
-    const query = this._searchBar.querySelector(".glass__search-input").value;
+    const query = this.searchBar.querySelector('.glass__search-input').value;
 
-    this._clearInput();
+    this.clearInput();
     return query;
   }
 
-  _clearInput() {
-    this._searchBar.querySelector(".glass__search-input").value = "";
+  clearInput() {
+    this.searchBar.querySelector('.glass__search-input').value = '';
   }
 
-  _clear() {
-    this._parentElement.innerHTML = "";
+  clear() {
+    this.parentElement.innerHTML = '';
   }
 
   render(data) {
@@ -31,66 +31,64 @@ class View {
       <h2>${data.name}, ${data.country}</h2>
       <div class="glass__temperature">
           <img src="${
-            data.iconSmall
-          }" alt="weather icon" class="glass__weather-icon">
-          <h1>${data.temp}<sup>°${data.unit === "metric" ? "C" : "F"}</sup></h1>
+  data.iconSmall
+}" alt="weather icon" class="glass__weather-icon">
+          <h1>${data.temp}<sup>°${data.unit === 'metric' ? 'C' : 'F'}</sup></h1>
       </div>
       <p>${data.description}</p>
       <div class="glass__details">
           <p>Feels like: ${data.feelsLike} °${
-      data.unit === "metric" ? "C" : "F"
-    }</p>
+  data.unit === 'metric' ? 'C' : 'F'
+}</p>
           <p>Humidity: ${data.humidity}%</p>
           <p>Sunrise: ${data.sunrise}</p>
           <p>Sunset: ${data.sunset}</p>
       </div>
       <div class="glass__switch">
           <div class="glass__select celcius ${
-            data.unit === "metric" ? "glass__select--active" : ""
-          }" data-unit="metric">C</div>
+  data.unit === 'metric' ? 'glass__select--active' : ''
+}" data-unit="metric">C</div>
           <div class="glass__select fahrenheit ${
-            data.unit === "imperial" ? "glass__select--active" : ""
-          }" data-unit="imperial">F</div>
+  data.unit === 'imperial' ? 'glass__select--active' : ''
+}" data-unit="imperial">F</div>
       </div>
     </div>
     `;
+    this.smallCircle.style.backgroundImage = `url(${data.iconBig})`;
 
-    // this._bigCircle.style.backgroundImage = `url(${data.flag})`;
-    this._smallCircle.style.backgroundImage = `url(${data.iconBig})`;
-
-    this._clear();
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    this.clear();
+    this.parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
   renderSpinner() {
-    const markup = `<div class="glass__loader"></div>`;
+    const markup = '<div class="glass__loader"></div>';
 
-    this._clear();
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    this.clear();
+    this.parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
-  renderMessage(message = this._message) {
+  renderMessage(message = this.message) {
     const markup = `<span class="glass__text">${message}</span>`;
 
-    this._clear();
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
+    this.clear();
+    this.parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
   addHandlerRender(handler) {
-    window.addEventListener("load", handler);
+    window.addEventListener('load', handler);
   }
 
   addHandlerSearch(handler) {
-    this._searchBar.addEventListener("submit", function (e) {
+    this.searchBar.addEventListener('submit', (e) => {
       e.preventDefault();
       handler();
     });
   }
 
   addHandlerConvert(handler) {
-    this._parentElement.addEventListener("click", function (e) {
-      const btn = e.target.closest(".glass__select");
-      if (!btn || btn.classList.contains("glass__select--active")) return;
+    this.parentElement.addEventListener('click', (e) => {
+      const btn = e.target.closest('.glass__select');
+      if (!btn || btn.classList.contains('glass__select--active')) return;
 
       handler(btn.dataset.unit);
     });
